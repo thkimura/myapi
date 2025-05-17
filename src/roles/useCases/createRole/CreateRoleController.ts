@@ -4,7 +4,6 @@ import { CreateRoleUseCase } from './CreateRoleUseCase'
 
 export class CreateRoleController {
 
-
   async handle(request: Request, response: Response): Promise<Response> {
     const createRoleUseCase = container.resolve(CreateRoleUseCase)
     const { name } = request.body
