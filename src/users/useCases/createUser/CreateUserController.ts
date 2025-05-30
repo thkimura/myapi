@@ -15,10 +15,4 @@ export class CreateUserController {
     });
     return response.status(201).json(user);
   }
-  async handleError(error, request, response): Promise<Response> {
-    if (error.name === "AppError") {
-      return response.status(error.statusCode || 400).json({ message: error.message });
-    }
-    return response.status(500).json({ message: "Internal server error" });
-  }
 }
