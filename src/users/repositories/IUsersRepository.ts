@@ -6,7 +6,7 @@ export type CreateUserDTO = {
   email: string;
   password: string;
   isAdmin: boolean;
-  role: Role
+  role: Role;
 }
 
 export type PaginateParams = {
