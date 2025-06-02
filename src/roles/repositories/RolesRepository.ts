@@ -1,8 +1,12 @@
-import { Role } from "@roles/http/routes/entities/Role"
-import { dataSource } from "@shared/typeorm"
-import { get } from "http"
-import { Repository } from "typeorm"
-import { CreateRoleDTO, IRolesRepository, PaginateParams, RolesPaginateProperties } from "./IRolesRepository"
+import { Role } from '@roles/http/routes/entities/Role'
+import { dataSource } from '@shared/typeorm'
+import { Repository } from 'typeorm'
+import {
+  CreateRoleDTO,
+  IRolesRepository,
+  PaginateParams,
+  RolesPaginateProperties,
+} from './IRolesRepository'
 
 export class RolesRepository implements IRolesRepository {
   private repository: Repository<Role>
@@ -24,8 +28,13 @@ export class RolesRepository implements IRolesRepository {
     await this.repository.remove(role)
   }
 
-  async findAll({page, skip, take}: PaginateParams): Promise<RolesPaginateProperties> {
-    const [roles, count] = await this.repository.createQueryBuilder()
+  async findAll({
+    page,
+    skip,
+    take,
+  }: PaginateParams): Promise<RolesPaginateProperties> {
+    const [roles, count] = await this.repository
+      .createQueryBuilder()
       .take(take)
       .skip(skip)
       .getManyAndCount()
@@ -46,4 +55,3 @@ export class RolesRepository implements IRolesRepository {
     return this.repository.findOneBy({ id })
   }
 }
-

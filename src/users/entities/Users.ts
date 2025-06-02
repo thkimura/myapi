@@ -1,6 +1,12 @@
 import { Role } from '@roles/http/routes/entities/Role'
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn } from 'typeorm'
-import { v4 as uuidv4} from 'uuid'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryColumn,
+} from 'typeorm'
+import { v4 as uuidv4 } from 'uuid'
 
 @Entity('users')
 export class User {
@@ -30,8 +36,8 @@ export class User {
   @CreateDateColumn()
   created_at: Date
 
-  constructor(){
-    if(!this.id) {
+  constructor() {
+    if (!this.id) {
       this.id = uuidv4()
     }
   }

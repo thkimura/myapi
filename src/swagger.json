@@ -9,7 +9,7 @@
       "email": "thalles.kimura@gmail.com"
     }
   },
-"paths": {
+  "paths": {
     "/roles": {
       "post": {
         "tags": ["Roles"],

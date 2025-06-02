@@ -1,4 +1,4 @@
-import { Role } from "@roles/http/routes/entities/Role"
+import { Role } from '@roles/http/routes/entities/Role'
 
 export type CreateRoleDTO = {
   name: string
@@ -21,7 +21,11 @@ export interface IRolesRepository {
   create({ name }: CreateRoleDTO): Promise<Role>
   save(role: Role): Promise<Role>
   delete(role: Role): Promise<void>
-  findAll({ page, skip, take }: PaginateParams): Promise<RolesPaginateProperties>
+  findAll({
+    page,
+    skip,
+    take,
+  }: PaginateParams): Promise<RolesPaginateProperties>
   findById(id: string): Promise<Role | null>
   findByName(name: string): Promise<Role | null>
   delete(role: Role): Promise<void>

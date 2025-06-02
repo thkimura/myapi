@@ -1,15 +1,23 @@
-import { MigrationInterface, QueryRunner, TableColumn, TableForeignKey } from "typeorm";
+import {
+  MigrationInterface,
+  QueryRunner,
+  TableColumn,
+  TableForeignKey,
+} from 'typeorm'
 
 export class AddRoleIdToUsersTable1747509658497 implements MigrationInterface {
-
-    public async up(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.addColumn('users', new TableColumn({
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.addColumn(
+      'users',
+      new TableColumn({
         name: 'roleId',
         type: 'uuid',
         isNullable: true,
       }),
-      )
-      await queryRunner.createForeignKey('users', new TableForeignKey({
+    )
+    await queryRunner.createForeignKey(
+      'users',
+      new TableForeignKey({
         name: 'roleId',
         columnNames: ['roleId'],
         referencedTableName: 'roles',
@@ -18,11 +26,10 @@ export class AddRoleIdToUsersTable1747509658497 implements MigrationInterface {
         onUpdate: 'SET NULL',
       }),
     )
-    }
+  }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-      await queryRunner.dropForeignKey('users', 'UserRoles')
-      await queryRunner.dropColumn('users', 'roleId')
-    }
-
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey('users', 'UserRoles')
+    await queryRunner.dropColumn('users', 'roleId')
+  }
 }
